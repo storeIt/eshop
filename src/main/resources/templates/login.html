@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="fragments/head"></th:block>
+<body>
+<div class="container-fluid">
+    <th:block th:replace="fragments/navbar"></th:block>
+    <main class="mt-3">
+        <h1 class="text-center text-info">Login</h1>
+        <hr class="bg-info w-50" style="height: 2px;">
+        <form class="form w-50 mx-auto" th:action="@{/login}" th:method="POST">
+            <div class="username-and-password-holder d-flex justify-content-between">
+            <div class="form-group w-40">
+                <label for="username">Username</label>
+                <input class="form-control" id="username" placeholder="Username..."
+                       type="text" name="username"/>
+            </div>
+            <div class="form-group w-40">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" placeholder="Password..." type="password" name="password">
+            </div>
+            </div>
+            <hr class="bg-info" style="height: 2px;">
+            <div class="button-holder d-flex justify-content-center">
+            <button class="btn btn-info" type="submit">Submit</button>
+            </div>
+            <div class="text-black d-flex justify-content-center mt-3">
+                Need a username and password?<a th:href="@{/register}">Register Now!</a>
+            </div>
+
+        </form>
+
+    </main>
+    <th:block th:replace="fragments/footer"></th:block>
+</div>
+</body>
+</html>
