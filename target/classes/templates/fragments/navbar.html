@@ -1,0 +1,45 @@
+<th:block th:fragment="navbar" sec:authorize="isAnonymous()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 rounded">
+        <a class="navbar-brand" th:href="@{/}">E-SHOP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <div id="search">
+                <form action="/catalog/products" method="get">
+                    <input name="keywords" size="14" value="">
+                    <input id="searchProducts" type="submit" value="Search">
+                </form>
+            </div>
+            <ul class="navbar-nav">
+                <th:block th:if="${principal == null}">
+                    <li class="nav-item active">
+                        <a class="nav-link text-light" th:href="@{/users/register}">Register</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-light" th:href="@{/users/login}">Login</a>
+                    </li>
+                </th:block>
+                <th:block th:if="${principal != null}">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" th:href="@{/profile}">Profile</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link img-thumbnail" th:href="@{/e-cart}"
+                           th:src="@{/home/om/IdeaProjects/eshop/src/main/resources/static/image/e_cart.png}"
+                           alt="ecart"></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                </th:block>
+
+            </ul>
+        </div>
+    </nav>
+    <th:block sec:authorize="isAuthenticated()"></th:block>
+</th:block>
