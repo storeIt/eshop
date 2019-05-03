@@ -1,28 +1,7 @@
-hr.hr-2 {
-    height: 2px;
+.w-40{
+    width: 40%;
 }
 
-.logout-button {
-    background: transparent;
-    border: none;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 1) !important;
+.bg-eshop {
+    background-color: #AFEEEE;
 }
-
-.logout-button:hover {
-    cursor: pointer;
-}
-
-.logout-button:focus {
-    outline: none;
-}
-
-img.img-thumbnail {
-    border: 1px solid #ddd; /* Gray border */
-    border-radius: 4px; /* Rounded border */
-    padding: 5px; /* Some padding */
-    max-width: 40px;
-    max-height: 40px;
-}
-
-
