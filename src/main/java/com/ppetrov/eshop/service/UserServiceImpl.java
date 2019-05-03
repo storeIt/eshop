@@ -40,9 +40,8 @@ public class UserServiceImpl implements UserService{
 //TODO: reformat the following code
         User user = modelMapper.map(userServiceModel, User.class);
         user.setPassword(bCryptPasswordEncoder.encode(userServiceModel.getPassword()));
-        User savedUser = userRepository.saveAndFlush(user);
-        UserServiceModel returnServiceModel = modelMapper.map(savedUser, UserServiceModel.class);
-        return returnServiceModel;
+
+        return modelMapper.map(userRepository.saveAndFlush(user), UserServiceModel.class);
     }
 
     @Override
