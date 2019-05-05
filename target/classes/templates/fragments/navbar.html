@@ -1,12 +1,12 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
+      xmlns:th="http://www.thymeleaf.org">
 <th:block>
     <th:block sec:authorize="isAnonymous()">
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 rounded font-weight-bold">
-            <a class="navbar-brand" th:href="@{/}">E-SHOP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#guestNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded font-weight-bold">
+            <a class="navbar-brand" th:href="@{/}">E-Shop</a>
+            <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                    data-target="#guestNav" data-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="guestNav">
@@ -21,49 +21,35 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
             </div>
         </nav>
     </th:block>
+
+    <!--    Is Authenticated-->
+
     <th:block sec:authorize="isAuthenticated()">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded font-weight-bold">
-            <a class="navbar-brand" th:href="@{/home}">E-SHOP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#userNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" th:href="@{/home}">E-shop</a>
+            <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                    data-target="#userNav" data-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="userNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <div class="dropdown">
-                            <a class="nav-link active dropdown-toggle" href="#" role="button" id="cartDropdown"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cart
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="cartDropdown">
-                                <th:block th:each="item : ${#session.getAttribute('shopping-cart')}" th:object="${item}">
-                                    <div class="dropdown-item" th:text="|*{product.product.name} x *{quantity}|"></div>
-                                </th:block>
-                                <div class="dropdown-divider"></div>
-                                <div class="text-center">
-                                    <a th:href="@{/cart/details}" class="btn btn-dark">Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/top-offers}">Top Offers</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/orders/my}">My Orders</a>
+                        <a class="nav-link" th:href="@{/home}">Home</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/users/profile}">Profile</a>
                     </li>
+
+                    <!--                    Role MODERATOR-->
+
                     <th:block sec:authorize="hasRole('ROLE_MODERATOR')">
                         <li class="nav-item active">
                             <div class="dropdown show">
-                                <a class="nav-link active dropdown-toggle" href="#" role="button" id="moderatorDropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a aria-expanded="false" aria-haspopup="true" class="nav-link active dropdown-toggle" data-toggle="dropdown"
+                                   href="#" id="moderatorDropdown" role="button">
                                     Moderator
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="moderatorDropdown">
+                                <div aria-labelledby="moderatorDropdown" class="dropdown-menu">
                                     <a class="dropdown-item" th:href="@{/categories/add}">Add Category</a>
                                     <a class="dropdown-item" th:href="@{/products/add}">Add Product</a>
                                     <div class="dropdown-divider"></div>
@@ -74,14 +60,15 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
                         </li>
                     </th:block>
 
+                    <!--                    Role ADMIN-->
                     <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                         <li class="nav-item active">
                             <div class="dropdown">
-                                <a class="nav-link active dropdown-toggle" href="#" role="button" id="adminDropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a aria-expanded="false" aria-haspopup="true" class="nav-link active dropdown-toggle" data-toggle="dropdown"
+                                   href="#" id="adminDropdown" role="button">
                                     Admin
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                                <div aria-labelledby="adminDropdown" class="dropdown-menu">
                                     <a class="dropdown-item" th:href="@{/users/all}">All Users</a>
                                     <a class="dropdown-item" th:href="@{/orders/all}">All Orders</a>
                                 </div>
@@ -98,31 +85,3 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
         </nav>
     </th:block>
 </th:block>
-
-<!--<th:block th:fragment="navbar">-->
-<!--    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 rounded">-->
-<!--        <a class="navbar-brand" th:href="@{/}">E-SHOP</a>-->
-<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">-->
-<!--            <div id="search">-->
-<!--                <form action="/catalog/products" method="get">-->
-<!--                    <input name="keywords" size="14" value="">-->
-<!--                    <input id="searchProducts" type="submit" value="Search">-->
-<!--                </form>-->
-<!--            </div>-->
-<!--            <ul class="navbar-nav">-->
-<!--                <li class="nav-item active">-->
-<!--                    <a class="nav-link" th:href="@{/}">Home</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item active">-->
-<!--                    <a class="nav-link img-thumbnail" th:href="@{/}" th:src="@{/home/om/IdeaProjects/eshop/src/main/resources/static/image/e_cart.png}"  alt="ecart"></a>-->
-<!--                </li>-->
-<!--                <li class="nav-item active">-->
-<!--                    <a class="nav-link" th:href="@{/users/login}">Login</a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </nav>-->
-<!--</th:block>-->

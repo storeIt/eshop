@@ -37,16 +37,15 @@ public class UserServiceImpl implements UserService{
             userServiceModel.setAuthorities(new LinkedHashSet<>());
             userServiceModel.getAuthorities().add(roleService.findByAuthority(RoleServiceImpl.ROLE_USER));
         }
-//TODO: reformat the following code
         User user = modelMapper.map(userServiceModel, User.class);
         user.setPassword(bCryptPasswordEncoder.encode(userServiceModel.getPassword()));
-
         return modelMapper.map(userRepository.saveAndFlush(user), UserServiceModel.class);
     }
 
+
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
         return userRepository
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found!"));

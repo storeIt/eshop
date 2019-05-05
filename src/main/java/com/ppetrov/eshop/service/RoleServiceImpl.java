@@ -16,10 +16,10 @@ public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
     private final ModelMapper modelMapper;
-    static final String ROLE_USER = "ROLE_USER";
-    static final String ROLE_MODERATOR = "ROLE_MODERATOR";
-    static final String ROLE_ADMINISTRATOR = "ROLE_ADMINISTRATOR";
-    static final String ROLE_ROOT = "ROLE_ROOT";
+    public static final String ROLE_USER = "ROLE_USER";
+    public static final String ROLE_MODERATOR = "ROLE_MODERATOR";
+    public static final String ROLE_ADMINISTRATOR = "ROLE_ADMINISTRATOR";
+    public static final String ROLE_ROOT = "ROLE_ROOT";
 
     @Autowired
     public RoleServiceImpl(RoleRepository roleRepository, ModelMapper modelMapper) {
@@ -37,18 +37,6 @@ public class RoleServiceImpl implements RoleService {
        }
     }
 
-//    @Override
-//    public void assignUserRoles(UserServiceModel userServiceModel, long numberOfUsers) {
-//        if (numberOfUsers == 0){
-//            userServiceModel.setAuthorities(
-//                    roleRepository.findAll()
-//                    .stream()
-//                    .map(r -> modelMapper.map(r, RoleServiceModel.class))
-//                    .collect(Collectors.toSet()));
-//        }
-//    }
-
-
     @Override
     public Set<RoleServiceModel> findAllRoles() {
         return roleRepository.findAll()
@@ -59,6 +47,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public RoleServiceModel findByAuthority(String authority) {
-        return modelMapper.map(authority, RoleServiceModel.class);
+        return modelMapper.map(roleRepository.findByAuthority(authority), RoleServiceModel.class);
     }
 }
