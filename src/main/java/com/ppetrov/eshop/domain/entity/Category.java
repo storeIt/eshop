@@ -10,7 +10,7 @@ public class Category extends BaseEntity {
 
     private String name;
 
-    @Column(name = "category_name", nullable = false, unique = true, updatable = true)
+    @Column(name = "category_name", nullable = false, unique = true)
     public String getName() {
         return name;
     }
