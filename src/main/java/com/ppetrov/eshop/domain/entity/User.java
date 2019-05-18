@@ -12,13 +12,8 @@ public class User extends BaseEntity implements UserDetails {
     private String username;
     private String password;
     private String email;
-
     private Set<Role> authorities;
 
-    public User() {
-    }
-
-    @Override
     @Column(name = "username", nullable = false, unique = true, updatable = false)
     public String getUsername() {
         return username;
@@ -28,7 +23,6 @@ public class User extends BaseEntity implements UserDetails {
         this.username = username;
     }
 
-    @Override
     @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
@@ -47,10 +41,8 @@ public class User extends BaseEntity implements UserDetails {
         this.email = email;
     }
 
-    @Override
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
+    @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(
                     name = "user_id",
                     referencedColumnName = "id"
@@ -58,8 +50,7 @@ public class User extends BaseEntity implements UserDetails {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id",
                     referencedColumnName = "id"
-            )
-    )
+            ))
     public Set<Role> getAuthorities() {
         return authorities;
     }
