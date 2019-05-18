@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="mt-3">
+        <h1 class="text-center text-dark">Add Category</h1>
+        <hr class="hr-2 bg-dark w-25">
+        <form th:action="@{/categories/add}" class="form w-25 mx-auto" id="add-category-form" method="post"><input
+                name="_csrf" type="hidden" value="c686cd14-a7f9-4216-8009-c093b7d3df86">
+            <div class="form-group">
+                <label class="font-weight-bold" for="add-category-name">Name</label>
+                <input class="form-control text-center" id="add-category-name" name="name" type="text">
+            </div>
+            <hr class="hr-2 bg-dark">
+            <div class="button-holder d-flex justify-content-center">
+                <button class="btn btn-success" type="submit">Add Category</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <th:block th:replace="fragments/footer"></th:block>
+    </footer>
+</div>
+</body>
+</html>
