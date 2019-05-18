@@ -26,7 +26,7 @@
 
     <th:block sec:authorize="isAuthenticated()">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded font-weight-bold">
-            <a class="navbar-brand" th:href="@{/home}">E-shop</a>
+            <a class="navbar-brand" th:href="@{/home}">E-Shop</a>
             <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                     data-target="#userNav" data-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
@@ -45,11 +45,11 @@
                     <th:block sec:authorize="hasRole('ROLE_MODERATOR')">
                         <li class="nav-item active">
                             <div class="dropdown show">
-                                <a aria-expanded="false" aria-haspopup="true" class="nav-link active dropdown-toggle" data-toggle="dropdown"
-                                   href="#" id="moderatorDropdown" role="button">
+                                <a class="nav-link active dropdown-toggle" href="#" role="button" id="moderatorDropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Moderator
                                 </a>
-                                <div aria-labelledby="moderatorDropdown" class="dropdown-menu">
+                                <div class="dropdown-menu" aria-labelledby="moderatorDropdown">
                                     <a class="dropdown-item" th:href="@{/categories/add}">Add Category</a>
                                     <a class="dropdown-item" th:href="@{/products/add}">Add Product</a>
                                     <div class="dropdown-divider"></div>
@@ -60,15 +60,14 @@
                         </li>
                     </th:block>
 
-                    <!--                    Role ADMIN-->
                     <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                         <li class="nav-item active">
                             <div class="dropdown">
-                                <a aria-expanded="false" aria-haspopup="true" class="nav-link active dropdown-toggle" data-toggle="dropdown"
-                                   href="#" id="adminDropdown" role="button">
+                                <a class="nav-link active dropdown-toggle" href="#" role="button" id="adminDropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Admin
                                 </a>
-                                <div aria-labelledby="adminDropdown" class="dropdown-menu">
+                                <div class="dropdown-menu" aria-labelledby="adminDropdown">
                                     <a class="dropdown-item" th:href="@{/users/all}">All Users</a>
                                     <a class="dropdown-item" th:href="@{/orders/all}">All Orders</a>
                                 </div>
