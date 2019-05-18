@@ -25,7 +25,7 @@ public class ApplicationCloudConfiguration {
      return new Cloudinary(new HashMap<String, Object>(){{
          put("cloud_name", cloudApiName);
          put("api_key" , cloudApiKey);
-         put("api_secret", cloudApiName);
+         put("api_secret", cloudApiSecret);
      }});
     }
 
