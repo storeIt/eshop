@@ -18,7 +18,7 @@ public class RoleServiceImpl implements RoleService {
     private final ModelMapper modelMapper;
     public static final String ROLE_USER = "ROLE_USER";
     public static final String ROLE_MODERATOR = "ROLE_MODERATOR";
-    public static final String ROLE_ADMINISTRATOR = "ROLE_ADMINISTRATOR";
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_ROOT = "ROLE_ROOT";
 
     @Autowired
@@ -32,7 +32,7 @@ public class RoleServiceImpl implements RoleService {
        if (roleRepository.count() == 0){
             roleRepository.saveAndFlush(new Role(ROLE_USER));
             roleRepository.saveAndFlush(new Role(ROLE_MODERATOR));
-            roleRepository.saveAndFlush(new Role(ROLE_ADMINISTRATOR));
+            roleRepository.saveAndFlush(new Role(ROLE_ADMIN));
             roleRepository.saveAndFlush(new Role(ROLE_ROOT));
        }
     }

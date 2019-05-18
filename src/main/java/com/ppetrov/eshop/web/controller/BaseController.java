@@ -2,7 +2,7 @@ package com.ppetrov.eshop.web.controller;
 
 import org.springframework.web.servlet.ModelAndView;
 
-public class BaseController {
+class BaseController {
 
     protected ModelAndView view(String view, ModelAndView modelAndView){
         modelAndView.setViewName(view);
